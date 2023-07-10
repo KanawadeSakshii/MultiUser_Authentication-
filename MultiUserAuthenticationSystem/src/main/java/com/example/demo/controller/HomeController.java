@@ -34,7 +34,7 @@ public class HomeController {
 	
 
 	
-	@ModelAttribute //after login get user detail on the basis of user folder home.html
+	@ModelAttribute 
 	private void userDetails(Model m, Principal p) {
 		if(p!=null) {
 			String email = p.getName();
@@ -71,7 +71,6 @@ public class HomeController {
 			session.setAttribute("msgs", "Email Id already Exist...!");
 		}
 		else {
-			 //UserDtls UserDtls=userService.createUser(user,url);
 		      if(user!=null && user.getPassword().equals(ReEnterPassword)) {
 						session.setAttribute("msgs", "Registration Sucessfully Done...!!!");
 						UserDtls UserDtls=userService.createUser(user,url);
@@ -129,7 +128,7 @@ public class HomeController {
 		UserDtls updateUser=userRepository.save(user);
 		
 		if(updateUser!=null) {
-			session.setAttribute("msg", "Password Changed now you can login");
+			session.setAttribute("msg1", "Password Changed");
 		}
 		return "redirect:/loadForgotPassword";
 	}

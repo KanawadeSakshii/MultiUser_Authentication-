@@ -52,7 +52,7 @@ public class UserController {
 		
 		String email=p.getName();
 		UserDtls loginUser=userRepository.findByEmail(email);
-		boolean t=bCryptPasswordEncoder.matches(oldPass, loginUser.getPassword()); //check oldPass and enter pass is same or not
+		boolean t=bCryptPasswordEncoder.matches(oldPass, loginUser.getPassword());
 		
 		if(t){
 			
@@ -64,11 +64,9 @@ public class UserController {
 		    }else {
 				session.setAttribute("msg", "Something Wrong on Server");
 			       }
-			//System.out.println("password match");
 		}
 		else{
 			session.setAttribute("msg", "Old Password Incorrect....!");
-			//System.out.println("password Not match");
 		}
 		return "redirect:/user/changepassword";
 	}
